@@ -68,4 +68,15 @@ export class ProductsComponent implements OnInit {
       prod.selected=data.selected
     })
   }
+  onDelete(prod:Product)
+  {
+    let v=confirm("Etes vous sûre?");
+    if(v)
+    this.productServices.deleteProduct(prod)
+    .subscribe((data)=>{
+      this.onGetAllProducts();
+      
+    })
+  }
+  
 }

@@ -52,6 +52,7 @@
                             <th>Selected</th>
                             <th>Available</th>
                             <th>Select/Unselect</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,6 +68,12 @@
                                 <button class="btn btn-sm" [ngClass]="prod.selected? 'btn-success':'btn-danger'" (click)="onSelect(prod)">
                                     <span class="fa " *ngIf="prod.selected">Unselect</span>
                                     <span class="fa " *ngIf="!prod.selected">Select</span>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-danger" (click)="onDelete(prod)">
+                                    <span class="fa fa-trash ms-10" ></span> Delete
+                                   
                                 </button>
                             </td>
                         </tr>
