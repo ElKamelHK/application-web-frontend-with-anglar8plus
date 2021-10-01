@@ -1,0 +1,61 @@
+<div class="conainer">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <button (click)="onGetAllProducts()" class="btn btn-outline-info ms-2">All</button>
+                </li>
+                <li class="nav-item">
+                    <button (click)="onGetSelectedProducts()" class="btn btn-outline-info ms-2">Selected</button>
+                </li>
+                <li class="nav-item">
+                    <button (click)="onGetAvailabeProducts()" class="btn btn-outline-info ms-2">Available</button>
+                </li>
+
+            </ul>
+        </div>
+
+    </nav>
+    <div class="container mt-5">
+        <ng-container *ngIf="(products$ |async) as result" [ngSwitch]="result.dataState">
+
+            <ng-container *ngSwitchCase="DataStateEnum.LOADING">
+
+                <div class="spinner-border text-secondary" role="status">
+                    <span class="visually-hidden"></span>
+                </div> Loading...
+            </ng-container>
+            <ng-container *ngSwitchCase="DataStateEnum.ERROR">
+                <div class="alert alert-danger">{{result.errorMessage}}</div>
+            </ng-container>
+            <ng-container *ngSwitchCase="DataStateEnum.LOADED">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Selected</th>
+                            <th>Available</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let prod of result.data ">
+                            <td>{{prod.id}}</td>
+                            <td>{{prod.name}}</td>
+                            <td>{{prod.price}}</td>
+                            <td>{{prod.quantity}}</td>
+                            <td>{{prod.selected}}</td>
+                            <td>{{prod.availabe}}</td>
+                        </tr>
+                </table>
+            </ng-container>
+        </ng-container>
+    </div>
+
+
+
+</div>
