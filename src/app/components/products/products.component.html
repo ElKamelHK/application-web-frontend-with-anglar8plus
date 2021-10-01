@@ -51,6 +51,7 @@
                             <th>Quantity</th>
                             <th>Selected</th>
                             <th>Available</th>
+                            <th>Select/Unselect</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,6 +63,12 @@
                             <td>{{prod.quantity}}</td>
                             <td>{{prod.selected}}</td>
                             <td>{{prod.availabe}}</td>
+                            <td>
+                                <button class="btn btn-sm" [ngClass]="prod.selected? 'btn-success':'btn-danger'" (click)="onSelect(prod)">
+                                    <span class="fa " *ngIf="prod.selected">Unselect</span>
+                                    <span class="fa " *ngIf="!prod.selected">Select</span>
+                                </button>
+                            </td>
                         </tr>
                 </table>
             </ng-container>

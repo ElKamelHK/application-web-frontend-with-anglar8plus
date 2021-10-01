@@ -29,4 +29,10 @@ export class ProductsService{
         let host=environment.host_serve;
         return this.http.get<Product[]>(host+"/products?name_like="+keyword);   
     }
+    select(product:Product):Observable<Product>
+    {
+        let host=environment.host_serve;
+        product.selected=!product.selected;
+        return this.http.put<Product>(host+"/products/"+product.id,product);   
+    }
 }

@@ -61,4 +61,11 @@ export class ProductsComponent implements OnInit {
     )
 
   }
+  onSelect(prod:Product)
+  {
+    this.productServices.select(prod)
+    .subscribe((data)=>{
+      prod.selected=data.selected
+    })
+  }
 }
