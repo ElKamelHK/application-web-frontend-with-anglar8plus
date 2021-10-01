@@ -14,6 +14,18 @@
                 </li>
 
             </ul>
+            <ul class="navbar navbar-nav ms-auto">
+                <li>
+                    <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="d-flex">
+                        <div class="d-flex">
+                            <input ngModel name="keyword" type="text" class="form-control me-2" (keyup)="onSearch(f.value)">
+                            <button class="btn btn-outline-info btn-sm">
+                                <span class="fa fa-search">Search</span>
+                            </button>
+                        </div>
+                    </form>
+                </li>
+            </ul>
         </div>
 
     </nav>

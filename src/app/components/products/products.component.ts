@@ -49,4 +49,16 @@ export class ProductsComponent implements OnInit {
       catchError((err)=>of({dataState:DataStateEnum.ERROR,errorMessage:"erreur serveur veuillez réessayer plus tard ! "}))
     )
   }
+  onSearch(dataForms:any)
+  { 
+    this.products$=this.productServices.getSearchProducts(dataForms.keyword)
+    .pipe(
+      map((data)=>{
+        return ({dataState:DataStateEnum.LOADED,data:data})
+      }),
+      startWith({dataState:DataStateEnum.LOADING}),
+      catchError((err)=>of({dataState:DataStateEnum.ERROR,errorMessage:"erreur serveur veuillez réessayer plus tard ! "}))
+    )
+
+  }
 }

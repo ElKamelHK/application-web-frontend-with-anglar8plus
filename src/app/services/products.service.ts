@@ -24,4 +24,9 @@ export class ProductsService{
         let host=environment.host_serve;
         return this.http.get<Product[]>(host+"/products?valibale=true");   
     }
+    getSearchProducts(keyword:string):Observable<Product[]>
+    {
+        let host=environment.host_serve;
+        return this.http.get<Product[]>(host+"/products?name_like="+keyword);   
+    }
 }
